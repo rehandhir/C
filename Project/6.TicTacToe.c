@@ -1,4 +1,5 @@
 //Tic Tac Toe multiplayer game
+#include "../ANSICF.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,6 +24,7 @@ int main()
 {
     while (1)
     {
+        printf(CRH);
         system("clear||cls");
         switch (start())
         {
@@ -37,7 +39,7 @@ int main()
             system("clear||cls");
             exit(0);
         default:
-            printf("\n\tInvalid choice");
+            printf(B RRED "\n\tInvalid choice" RES);
             h_scr();
         }
         count = 0;
@@ -50,11 +52,12 @@ int main()
 int start()
 {
     int ch;
-    printf("\n\t1.Play TicTacToe");
-    printf("\n\t2.Game Result");
-    printf("\n\t3.Exit");
-    printf("\n\tEnter your choice: ");
+    printf(B RGRN "\n\t1.Play TicTacToe");
+    printf(RBLU "\n\t2.Game Result");
+    printf(RRED "\n\t3.Exit");
+    printf(RCYN "\n\tEnter your choice: ");
     scanf("%d", &ch);
+    printf(RES);
     return (ch);
 }
 void game()
@@ -78,43 +81,47 @@ void game()
 }
 void g_name()
 {
-    printf("\n\n\t\t\t TicTacToe\n");
+    printf("\n\n\t\t\t  " B DU BGRN "TicTacToe" RES "\n");
 }
 void p_name()
 {
-    printf("\tEnter Player1 name: ");
-    while (getchar() != '\n') ;//clear||cls input buffer
+    printf(B RBLU "\tEnter Player1 name: ");
+    while (getchar() != '\n')
+        ; //clear||cls input buffer
     scanf("%[^\n]", p1);  
     strcpy(p1_n[pl], p1); //copy player1 name
-    printf("\tEnter Player2 name: ");
-    while (getchar() != '\n')   ;
+    printf(RMAG "\tEnter Player2 name: ");
+    while (getchar() != '\n') ;
     scanf("%[^\n]", p2);
     strcpy(p2_n[pl], p2); //copy player2 name
     pl++;
+    printf(RES);
 }
 void design()
 {
     printf("\n");
+    puts(B RBBLU RYLO "\t\t\t|---|---|---|");
+    printf("\t\t\t| " BLK "%c" RES B RBBLU RYLO " | " BLK "%c" RES B RBBLU RYLO " | " BLK "%c" RES B RBBLU RYLO " |\n", a[0], a[1], a[2]);
     puts("\t\t\t|---|---|---|");
-    printf("\t\t\t| %c | %c | %c |\n", a[0], a[1], a[2]);
+    printf("\t\t\t| " BLK "%c" RES B RBBLU RYLO " | " BLK "%c" RES B RBBLU RYLO " | " BLK "%c" RES B RBBLU RYLO " |\n", a[3], a[4], a[5]);
     puts("\t\t\t|---|---|---|");
-    printf("\t\t\t| %c | %c | %c |\n", a[3], a[4], a[5]);
-    puts("\t\t\t|---|---|---|");
-    printf("\t\t\t| %c | %c | %c |\n", a[6], a[7], a[8]);
-    puts("\t\t\t|---|---|---|");
+    printf("\t\t\t| " BLK "%c" RES B RBBLU RYLO " | " BLK "%c" RES B RBBLU RYLO " | " BLK "%c" RES B RBBLU RYLO " |\n", a[6], a[7], a[8]);
+    puts("\t\t\t|---|---|---|" RES);
 }
 void input_pos()
 {
     char ch;
     int i, flag1;
+    printf(B);
     if (i_pos == 0)
     {
         do
         {
             if (flag1 == 1)
-                printf("\n\tWrong Input!");
-            printf("\n\t%s enter your position: ", p1);
-            while (getchar() != '\n') ;
+                printf(RRED "\n\tWrong Input!");
+            printf(RBLU "\n\t%s enter your position: ", p1);
+            while (getchar() != '\n')
+                ;
             scanf("%c", &ch); //take position input from player 1
             if (ch == '0' || ch == 'x')
                 flag1 = 1;
@@ -139,9 +146,10 @@ void input_pos()
         do
         {
             if (flag1 == 1)
-                printf("\n\tWrong Input!");
-            printf("\n\t%s enter your position: ", p2);
-            while (getchar() != '\n');
+                printf(RRED "\n\tWrong Input!");
+            printf(RMAG "\n\t%s enter your position: ", p2);
+            while (getchar() != '\n')
+                ;
             scanf("%c", &ch); //take position input from player 2
             if (ch == '0' || ch == 'x')
                 flag1 = 1;
@@ -162,6 +170,7 @@ void input_pos()
         i_pos = 0;
     }
     count++;
+    printf(RES);
 }
 int chk_pos()
 {
@@ -205,19 +214,19 @@ void final(int r)
 {
     if (r == 0)
     {
-        printf("\n\t%s Win\n" ,p1);
+        printf(B RBLU "\n\t%s Win\n" RES, p1);
         strcpy(win[m], p1); //copy winner name
         p1_win++;
     }
     else if (r == 1)
     {
-        printf("\n\t%s Win\n", p2);
+        printf(B RMAG "\n\t%s Win\n" RES, p2);
         strcpy(win[m], p2);
         p2_win++;
     }
     else
     {
-        printf("\n\tGame Draw\n");
+        printf(B RRED "\n\tGame Draw\n");
         g_draw++;
     }
     if (r == 1 || r == 0)
@@ -230,24 +239,26 @@ void final(int r)
 void h_scr()
 {
     l = 0;
-    printf("\n\tPress Enter to continue...");
-    while (getchar() != '\n') ;
+    printf(B BL YLO "\n\tPress Enter to continue..." RES);
+    while (getchar() != '\n')
+        ;
     getchar();
 }
 void g_result()
 {
     system("clear||cls");
-    printf("\n\t\t\tResult Sheet");
-    printf("\n\tGame played: %d", g_play);
-    printf("\n\tx Win: %d\t 0 Win: %d\t Game Draw: %d\n", p1_win, p2_win, g_draw);
+    printf(DU B RV RCYN "\n\t\t\tResult Sheet" RES);
+    printf(I B U GRN "\n\tGame played: %d" RES, g_play);
+    printf(B RBLU "\n\tx Win: %d" RES B RMAG "\t 0 Win: %d" RES B RRED "\t Game Draw: %d\n" RES, p1_win, p2_win, g_draw);
     for (int i = 0; i < g_play; i++)
     {
-        printf("\n\tGame %d", i + 1);
-        printf("\n\tPlayer1: %s\t Player2: %s", p1_n[i], p2_n[i]);
+        printf(B "\n\tGame %d", i + 1);
+        printf(RBLU "\n\tPlayer1: %s\t" RMAG " Player2: %s", p1_n[i], p2_n[i]);
         if (b[i] == 1)
-            printf("\n\tWinner: %s\n", win[i]);
+            printf(RYLO "\n\tWinner: %s\n", win[i]);
         else
-            printf("\n\tGame Draw\n");
+            printf(B RRED "\n\tGame Draw\n");
+        printf(RES);
     }
     h_scr();
 }
