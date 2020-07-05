@@ -88,10 +88,11 @@ void p_name()
     printf(B RBLU "\tEnter Player1 name: ");
     while (getchar() != '\n')
         ; //clear||cls input buffer
-    scanf("%[^\n]", p1);  
+    scanf("%[^\n]", p1);
     strcpy(p1_n[pl], p1); //copy player1 name
     printf(RMAG "\tEnter Player2 name: ");
-    while (getchar() != '\n') ;
+    while (getchar() != '\n')
+        ;
     scanf("%[^\n]", p2);
     strcpy(p2_n[pl], p2); //copy player2 name
     pl++;

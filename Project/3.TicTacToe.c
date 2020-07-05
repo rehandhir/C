@@ -83,11 +83,13 @@ void g_name()
 void p_name()
 {
     printf("\tEnter Player1 name: ");
-    while (getchar() != '\n') ;//clear||cls input buffer
-    scanf("%[^\n]", p1);  
+    while (getchar() != '\n')
+        ; //clear||cls input buffer
+    scanf("%[^\n]", p1);
     strcpy(p1_n[pl], p1); //copy player1 name
     printf("\tEnter Player2 name: ");
-    while (getchar() != '\n')   ;
+    while (getchar() != '\n')
+        ;
     scanf("%[^\n]", p2);
     strcpy(p2_n[pl], p2); //copy player2 name
     pl++;
@@ -114,7 +116,8 @@ void input_pos()
             if (flag1 == 1)
                 printf("\n\tWrong Input!");
             printf("\n\t%s enter your position: ", p1);
-            while (getchar() != '\n') ;
+            while (getchar() != '\n')
+                ;
             scanf("%c", &ch); //take position input from player 1
             if (ch == '0' || ch == 'x')
                 flag1 = 1;
@@ -141,7 +144,8 @@ void input_pos()
             if (flag1 == 1)
                 printf("\n\tWrong Input!");
             printf("\n\t%s enter your position: ", p2);
-            while (getchar() != '\n');
+            while (getchar() != '\n')
+                ;
             scanf("%c", &ch); //take position input from player 2
             if (ch == '0' || ch == 'x')
                 flag1 = 1;
@@ -205,7 +209,7 @@ void final(int r)
 {
     if (r == 0)
     {
-        printf("\n\t%s Win\n" ,p1);
+        printf("\n\t%s Win\n", p1);
         strcpy(win[m], p1); //copy winner name
         p1_win++;
     }
@@ -231,7 +235,8 @@ void h_scr()
 {
     l = 0;
     printf("\n\tPress Enter to continue...");
-    while (getchar() != '\n') ;
+    while (getchar() != '\n')
+        ;
     getchar();
 }
 void g_result()
