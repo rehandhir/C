@@ -108,17 +108,18 @@ void design()
 void input_pos()
 {
     char ch;
-    int i, flag1;
+    int pos, i, flag1;
     if (i_pos == 0)
     {
         do
         {
             if (flag1 == 1)
                 printf("\n\tWrong Input!");
-            printf("\n\t%s enter your position: ", p1);
-            while (getchar() != '\n')
-                ;
-            scanf("%c", &ch); //take position input from player 1
+            printf("\n\t%s Enter your position: ", p1);
+            // while (getchar() != '\n');
+            // scanf("%c", &ch); //take position input from player 1
+            scanf("%d",&pos);
+            ch = 48+(char)pos;
             if (ch == '0' || ch == 'x')
                 flag1 = 1;
             else
@@ -144,9 +145,8 @@ void input_pos()
             if (flag1 == 1)
                 printf("\n\tWrong Input!");
             printf("\n\t%s enter your position: ", p2);
-            while (getchar() != '\n')
-                ;
-            scanf("%c", &ch); //take position input from player 2
+            scanf("%d",&pos);
+            ch = 48+(char)pos;
             if (ch == '0' || ch == 'x')
                 flag1 = 1;
             else
