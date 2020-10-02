@@ -1,4 +1,6 @@
- #include<stdio.h>
+// Simple Interest using for loop
+
+#include<stdio.h>
  main()
  {
      int i,p,n;
